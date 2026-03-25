@@ -21,7 +21,8 @@
               "});"
             ],
             "type": "text/javascript",
-            "packages": {}
+            "packages": {},
+            "requests": {}
           }
         }
       ],
@@ -30,7 +31,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"nome\": \"Hellenn2\",\r\n  \"email\": \"hellen2@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+          "raw": "{\r\n  \"nome\": \"Hellen\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"administrador\": \"true\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -38,9 +39,9 @@
           }
         },
         "url": {
-          "raw": "{{local}}usuarios",
+          "raw": "{{url}}usuarios",
           "host": [
-            "{{local}}usuarios"
+            "{{url}}usuarios"
           ]
         }
       },
@@ -62,7 +63,8 @@
               ""
             ],
             "type": "text/javascript",
-            "packages": {}
+            "packages": {},
+            "requests": {}
           }
         }
       ],
@@ -71,7 +73,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"nome\": \"Hellen\",\r\n  \"email\": \"hellen@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+          "raw": "{\r\n  \"nome\": \"Hellen\",\r\n  \"email\": \"{{emailAdmin}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"administrador\": \"true\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -79,14 +81,9 @@
           }
         },
         "url": {
-          "raw": "http://localhost:3000/usuarios",
-          "protocol": "http",
+          "raw": "{{url}}usuarios",
           "host": [
-            "localhost"
-          ],
-          "port": "3000",
-          "path": [
-            "usuarios"
+            "{{url}}usuarios"
           ]
         }
       },
@@ -107,7 +104,8 @@
               "});"
             ],
             "type": "text/javascript",
-            "packages": {}
+            "packages": {},
+            "requests": {}
           }
         }
       ],
@@ -115,9 +113,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{local}}usuarios",
+          "raw": "{{url}}usuarios",
           "host": [
-            "{{local}}usuarios"
+            "{{url}}usuarios"
           ]
         }
       },
@@ -138,7 +136,8 @@
               "});"
             ],
             "type": "text/javascript",
-            "packages": {}
+            "packages": {},
+            "requests": {}
           }
         }
       ],
@@ -146,9 +145,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{local}}usuarios/xlNGroeJme4sfxUT",
+          "raw": "{{url}}usuarios/xlNGroeJme4sfxUT",
           "host": [
-            "{{local}}usuarios"
+            "{{url}}usuarios"
           ],
           "path": [
             "xlNGroeJme4sfxUT"
@@ -172,7 +171,8 @@
               "});"
             ],
             "type": "text/javascript",
-            "packages": {}
+            "packages": {},
+            "requests": {}
           }
         },
         {
@@ -182,7 +182,8 @@
               ""
             ],
             "type": "text/javascript",
-            "packages": {}
+            "packages": {},
+            "requests": {}
           }
         }
       ],
@@ -190,9 +191,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{local}}usuarios/hOKpiUdGx4YsOKcO",
+          "raw": "{{url}}usuarios/hOKpiUdGx4YsOKcO",
           "host": [
-            "{{local}}usuarios"
+            "{{url}}usuarios"
           ],
           "path": [
             "hOKpiUdGx4YsOKcO"
@@ -216,7 +217,8 @@
               "});"
             ],
             "type": "text/javascript",
-            "packages": {}
+            "packages": {},
+            "requests": {}
           }
         }
       ],
@@ -224,9 +226,9 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "{{local}}usuarios/o4F1XSxMYZVAUF5j",
+          "raw": "{{url}}usuarios/o4F1XSxMYZVAUF5j",
           "host": [
-            "{{local}}usuarios"
+            "{{url}}usuarios"
           ],
           "path": [
             "o4F1XSxMYZVAUF5j"
@@ -250,7 +252,8 @@
               "});"
             ],
             "type": "text/javascript",
-            "packages": {}
+            "packages": {},
+            "requests": {}
           }
         }
       ],
@@ -267,9 +270,9 @@
           }
         },
         "url": {
-          "raw": "{{local}}usuarios/wyZZIaQi8VqOcRvh",
+          "raw": "{{url}}usuarios/wyZZIaQi8VqOcRvh",
           "host": [
-            "{{local}}usuarios"
+            "{{url}}usuarios"
           ],
           "path": [
             "wyZZIaQi8VqOcRvh"
