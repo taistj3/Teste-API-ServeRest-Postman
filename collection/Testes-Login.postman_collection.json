@@ -1,0 +1,281 @@
+{
+  "info": {
+    "_postman_id": "da14785b-7ac9-4593-89bf-9082a990da09",
+    "name": "Testes Login",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "37087753"
+  },
+  "item": [
+    {
+      "name": "Email incorreto e senha correta",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 401\", function () {\r",
+              "    pm.response.to.have.status(401);\r",
+              "    });\r",
+              "pm.test(\"Mensagem de unthorized\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"Email e/ou senha inválidos\");\r",
+              "    });\r",
+              "pm.test(\"Token não é retornado\", function () {\r",
+              "        pm.expect(pm.response.json().token).to.be.undefined;\r",
+              "        });"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "token",
+            "value": "",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"fulana123@qa.com\",\r\n  \"password\": \"{{password}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}login",
+          "host": [
+            "{{url}}login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Email correto e senha incorreta",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 401\", function () {\r",
+              "    pm.response.to.have.status(401);\r",
+              "    });\r",
+              "pm.test(\"Mensagem de unthorized\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"Email e/ou senha inválidos\");\r",
+              "    });\r",
+              "pm.test(\"Token não é retornado\", function () {\r",
+              "        pm.expect(pm.response.json().token).to.be.undefined;\r",
+              "        });    "
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}login",
+          "host": [
+            "{{url}}login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Email com formato inválido",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r",
+              "    pm.response.to.have.status(400);\r",
+              "    });\r",
+              "pm.test(\"Mensagem de unthorized\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"email deve ser um email válido\");\r",
+              "    });\r",
+              "pm.test(\"Token não é retornado\", function () {\r",
+              "        pm.expect(pm.response.json().token).to.be.undefined;\r",
+              "        });"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"{{emailInvalido}}\",\r\n  \"password\": \"{{password}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}login",
+          "host": [
+            "{{url}}login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Campo email vazio",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r",
+              "    pm.response.to.have.status(400);\r",
+              "    });\r",
+              "pm.test(\"Mensagem de unthorized\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"email não pode ficar em branco\");\r",
+              "    });\r",
+              "pm.test(\"Token não é retornado\", function () {\r",
+              "        pm.expect(pm.response.json().token).to.be.undefined;\r",
+              "        });"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"\",\r\n  \"password\": \"teste\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}login",
+          "host": [
+            "{{url}}login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Campo senha vazio",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r",
+              "    pm.response.to.have.status(400);\r",
+              "    });\r",
+              "pm.test(\"Mensagem de unthorized\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"password não pode ficar em branco\");\r",
+              "    });\r",
+              "pm.test(\"Token não é retornado\", function () {\r",
+              "        pm.expect(pm.response.json().token).to.be.undefined;\r",
+              "        });"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"fulano@qa.com\",\r\n  \"password\": \"\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}login",
+          "host": [
+            "{{url}}login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Campos email e senha vazios",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r",
+              "    pm.response.to.have.status(400);\r",
+              "    });\r",
+              "pm.test(\"Mensagem de unthorized\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"email não pode ficar em branco\", \"password não pode ficar em branco\");\r",
+              "    });\r",
+              "pm.test(\"Token não é retornado\", function () {\r",
+              "        pm.expect(pm.response.json().token).to.be.undefined;\r",
+              "        });"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"\",\r\n  \"password\": \"\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}login",
+          "host": [
+            "{{url}}login"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
