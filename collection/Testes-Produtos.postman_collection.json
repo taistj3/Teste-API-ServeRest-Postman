@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "714ac4b4-c303-4e29-922b-48ee0b4865c7",
-    "name": "Testes Produtos",
+    "name": "Testes-Produtos",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "37087753"
   },
@@ -15,8 +15,13 @@
             "exec": [
               "pm.test(\"Status code is 200\", function () {\r",
               "    pm.response.to.have.status(200);\r",
-              "    });\r",
-              ""
+              "});\r",
+              "pm.test(\"Response body is not empty\", function () {\r",
+              "    pm.response.to.not.be.empty;\r",
+              "});\r",
+              "pm.test(\"Response body is json\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -95,6 +100,240 @@
         "body": {
           "mode": "raw",
           "raw": "{\r\n    \"nome\": \"Produto CRUD1\",\r\n    \"preco\": 520,\r\n    \"descricao\": \"Produto de teste\",\r\n    \"quantidade\": 382\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}produtos",
+          "host": [
+            "{{url}}produtos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cadastrar produto com nome duplicado",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r",
+              "    pm.response.to.have.status(400);\r",
+              "    });\r",
+              "pm.test(\"Response body contains message\", function () {\r",
+              "    pm.response.to.have.jsonBody('message', 'Já existe produto com esse nome');\r",
+              "    });"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "",
+            "value": "",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nome\": \"Produto CRUD1\",\r\n    \"preco\": 520,\r\n    \"descricao\": \"Produto de teste\",\r\n    \"quantidade\": 382\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}produtos",
+          "host": [
+            "{{url}}produtos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cadastrar produto com preço negativo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r",
+              "    pm.response.to.have.status(400);\r",
+              "    });\r",
+              "pm.test(\"Response body contains message\", function () {\r",
+              "    pm.response.to.have.jsonBody('preco', 'preco deve ser um número positivo');\r",
+              "    });"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "",
+            "value": "",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nome\": \"Produto CRUD999\",\r\n    \"preco\": -520,\r\n    \"descricao\": \"Produto de teste\",\r\n    \"quantidade\": 382\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}produtos",
+          "host": [
+            "{{url}}produtos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cadastrar produto com quantidade negativa",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r",
+              "    pm.response.to.have.status(400);\r",
+              "    });\r",
+              "pm.test(\"Response body contains message\", function () {\r",
+              "    pm.response.to.have.jsonBody('quantidade', 'quantidade deve ser maior ou igual a 0');\r",
+              "    });\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "",
+            "value": "",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nome\": \"Produto CRUD999\",\r\n    \"preco\": 520,\r\n    \"descricao\": \"Produto de teste\",\r\n    \"quantidade\": -382\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}produtos",
+          "host": [
+            "{{url}}produtos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cadastrar produto com campo obrigatório ausente",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r",
+              "    pm.response.to.have.status(400);\r",
+              "});\r",
+              "pm.test(\"Response body contains message\", function () {\r",
+              "    pm.response.to.have.jsonBody('preco', 'preco é obrigatório');\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "",
+            "value": "",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nome\": \"Produto CRUD999\",\r\n    \"descricao\": \"Produto de teste\",\r\n    \"quantidade\": 382\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -369,6 +608,63 @@
       "response": []
     },
     {
+      "name": "Editar Produto com ID inexistente",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 201\", function () {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});\r",
+              "pm.test(\"Response body contains message\", function () {\r",
+              "    pm.response.to.have.jsonBody('message', 'Cadastro realizado com sucesso');\r",
+              "});\r",
+              "pm.test(\"Response body contains _id\", function () {\r",
+              "    pm.response.to.have.jsonBody('_id');\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nome\": \"{{$randomProductName}}\",\r\n    \"preco\": 520,\r\n    \"descricao\": \"Produto de teste\",\r\n    \"quantidade\": 382\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}produtos/MXD9Ok74GTE55522",
+          "host": [
+            "{{url}}produtos"
+          ],
+          "path": [
+            "MXD9Ok74GTE55522"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
       "name": "Excluir produto",
       "event": [
         {
@@ -412,6 +708,55 @@
           ],
           "path": [
             "{{ID}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Excluir produto com ID inexistente",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "    });\r",
+              "pm.test(\"Response body contains message\", function () {\r",
+              "    pm.response.to.have.jsonBody('message', 'Nenhum registro excluído');\r",
+              "    });"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{url}}produtos/MXD9Ok74GTE55521",
+          "host": [
+            "{{url}}produtos"
+          ],
+          "path": [
+            "MXD9Ok74GTE55521"
           ]
         }
       },
